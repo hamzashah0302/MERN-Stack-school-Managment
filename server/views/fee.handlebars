@@ -1,0 +1,59 @@
+
+    <script src="/js/fee.js"></script>
+
+    
+    <div class="container bg-dark">
+        <div class="row">
+            <select class="form-select form-select-lg" aria-label=".form-select-lg example">
+                <option selected>Select Class</option>
+                <option value="1">1st</option>
+                <option value="2">2nd</option>
+                <option value="3">3rd</option>
+                <option value="3">4rd</option>
+            </select>
+
+            <select class="form-select form-select-lg" id ="selected_std" onchange="get_std(this.value);" aria-label=".form-select-lg example">
+                <option selected>Select Student</option>
+                <option value="1">hamza</option>
+                <option value="2">khan</option>
+                <option value="3">shah</option>
+            </select>
+        </div> 
+    </div> <hr>     
+    {{!--add fee Form Start --}}
+    <div>
+        <form class="form-inline" id= "fee_form">
+            <div class="form-group">
+                <label for="Roll No">Roll No</label>:</label>
+                <input type="input" class="form-control" placeholder="Roll No" id="RollNo" name="rollno">
+            </div>
+            <div class="form-group">
+                <label for="amount">Amount:</label>
+                <input type="input" class="form-control" placeholder="Fee amount" id="amount" name="amount">
+                <input type="date" id="date" name="Fee_date">
+            </div>
+            <button type="button" onclick="{add_fee()}" class="btn btn-primary">Add Fee</button>
+        </form>
+    </div> 
+    {{!--add fee Form Start --}}
+    <div class="table rounded text-center">
+        <h4>Fee History</h4>
+    </div>
+    <div id="fee_details">
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Paid Date</th>
+                </tr>
+            </thead>
+            <tbody id="table_body">
+                <tr>
+                <th scope="row"></th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+            

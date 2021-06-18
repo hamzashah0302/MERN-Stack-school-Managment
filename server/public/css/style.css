@@ -1,0 +1,46 @@
+
+.bg-light, .navbar{
+    background-color: #c5c5c5 !important;
+}
+
+.navbar-brand{
+    font-weight: bold;
+    font-size:28px;
+    font-family: monospace;
+    padding-right: 40px;
+}
+.navbar-dark,.navbar-nav,.nav-link{
+font-weight: 700;
+font-size: 14px;
+text-transform: uppercase;
+}
+.nav-link{
+    margin-right: 40px;
+}
+img{
+    height: 70px;
+    width: 70px;
+}
+.text-decoration-none:hover {
+    
+    color: rgb(146, 62, 56);
+    }
+
+    .modal.modal-fullscreen .modal-dialog {
+        width: 100vw;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        max-width: none;
+      }
+      
+      .modal.modal-fullscreen .modal-content {
+        height: auto;
+        height: 100vh;
+        border-radius: 0;
+        border: none; 
+      }
+      
+      .modal.modal-fullscreen .modal-body {
+        overflow-y: auto;
+      }

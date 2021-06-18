@@ -1,0 +1,200 @@
+
+
+
+<script src="/js/student.js"></script>
+  
+        <!-- <link rel="stylesheet" href="css/bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="style.css"/>
+        <script src="js/bootstrap.min.js"></script>
+         -->
+    <title>Document</title>
+    
+                     <!-- body start -->
+          
+
+{{!-- Search Student  --}}
+    
+
+          {{!-- side nav bar --}}
+<div class="container-fluid">
+  
+   <div class="bg-light py-3 float-left">
+         <a class="text-decoration-none d-block p-2 nav-link"data-toggle="modal" 
+         data-target="#RegisterModal" href="" > Regester Student</a>
+</div>
+  <div class="row">
+            {{!-- Start right main container all student data  --}}
+      <div class="col-12">
+            <table class="table table-hover border">
+              <thead>
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Father</th>
+                  <th scope="col">Address</th>
+                  <th scope="col">Date OF birth</th>
+                  <th scope="col">Class</th>
+                  <th scope="col">Contact No</th>
+                  <th scope="col" class="float-right">
+                  <form class="form-inline">
+            <input class="form-control" type="search" placeholder="ID Search Student" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form></th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                {{!-- get student data and show in table --}}
+                {{#each stds}}
+                <tr>
+                  
+                  <td>{{this.student_id}}</td>
+                  <td>{{this.name}}</td>
+                  <td>{{this.Father_name}}</td>
+                  <td>{{this.address}}</td>
+                  <td>{{this.dob}}</td>
+                  <td>{{this.class}}</td>
+                  <td>{{this.contact}}</td>
+                  <td class="text-right"><button type="button" onclick="delete_std(value)" value={{this.student_id}} style='height:35px' class="btn btn-danger">Delete</button>
+                  <button type="button" data-toggle="modal" data-target="#updateModal" onclick="{update_std(value)}" value={{this.student_id}} style='height:35px' class="btn btn-success">Edit</button></td>
+                </tr>{{/each}}
+                
+              </tbody>
+            </table>
+            
+        </div>
+              {{!-- End right main container all student data  --}}
+    </div>
+    </div>
+
+
+
+{{!-- Register Form area  Modal--}}
+ 
+<div class="modal fade modal-fullscreen" id="RegisterModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel">Add A Student</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="/student/saveSTD" method="post">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="Roll NO">Roll NO</label>
+      <input type="input" class="form-control" id="Rollno" name= "Rollno" placeholder="Student Roll No">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="Name">Name</label>
+      <input type="input" class="form-control" id="StdName" name="stdname" placeholder="Student Name">
+    </div>
+  </div>
+  <div class="form-row">
+  <div class="form-group col-md-6">
+    <label for="Father Name">Father Name</label>
+    <input type="input" class="form-control" id="Fname" name="fathername" placeholder="Father Name">
+  </div>
+  <div class="form-group col-md-6">
+    <label for="Address">Address</label>
+    <input type="text" class="form-control" id="StdAddress" name="address" placeholder="Address">
+  </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="Date of Birth">Date of Birth</label>
+      <input type="date" class="form-control" name="dob" placeholder="date of birth"id="dob">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputState">Class</label>
+      <select id="class" class="form-control" name="class">
+        <option selected>Choose...</option>
+        <option>Nusre class</option>
+        <option>KG class</option>
+        <option>1st class</option>
+        <option>2nd class</option>
+      </select>
+    </div>
+    <div class="form-group col-md-2">
+      <label for="Contact NO">Contact NO</label>
+      <input type="text" class="form-control" id="ContactNo" name="ContactNo" placeholder="123456789">
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary" >Save</button>
+</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{{!-- Edit Student Data Model  Start--}}
+
+<div class="modal fade modal-fullscreen" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel">Update A Student</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="/student/update_std" method="post">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="Roll NO">Roll NO</label>
+      <input type="input" class="form-control" id="Rollno_update" name= "Rollno" placeholder="Student Roll No">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="Name">Name</label>
+      <input type="input" class="form-control" id="StdName_update" name="stdname" placeholder="Student Name">
+    </div>
+  </div>
+  <div class="form-row">
+  <div class="form-group col-md-6">
+    <label for="Father Name">Father Name</label>
+    <input type="input" class="form-control" id="Fname_update" name="fathername" placeholder="Father Name">
+  </div>
+  <div class="form-group col-md-6">
+    <label for="Address">Address</label>
+    <input type="text" class="form-control" id="StdAddress_update" name="address" placeholder="Address">
+  </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="Date of Birth">Date of Birth</label>
+      <input type="date" class="form-control" name="dob" placeholder="date of birth"id="dob_update">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputState">Class</label>
+      <select id="class_update" class="form-control" name="class">
+        <option selected>Choose...</option>
+        <option>Nusre class</option>
+        <option>KG class</option>
+        <option>1st class</option>
+        <option>2nd class</option>
+      </select>
+    </div>
+    <div class="form-group col-md-2">
+      <label for="Contact NO">Contact NO</label>
+      <input type="text" class="form-control" id="ContactNo_update" name="ContactNo" placeholder="123456789">
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary" >Save Edition</button>
+</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>  
+          
+        
+{{!-- Edit Student Data Model  End --}}
