@@ -1,0 +1,19 @@
+.bg-light, .navbar{
+  background-color: #c5c5c5 !important;
+}
+
+.navbar-dark,.navbar-nav,.nav-link{
+font-weight: 700;
+font-size: 13px;
+text-transform: uppercase;
+}
+.nav-link{
+  margin-right: 20px;
+}
+img{
+  height: 70px;
+  width: 70px;
+}
+.shadow{
+  height: 72px;
+}
